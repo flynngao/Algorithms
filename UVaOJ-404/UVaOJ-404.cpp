@@ -23,13 +23,13 @@ int ispf(char* string){
 int ismf(char* string){
 
     for(int i = 0;i < num/2;i++){
-        int j = fc[string[i]] != string[num - i - 1];
-
-        printf("%d\n", j);
-        if((fc[string[i]] && (fc[string[i]] != string[num - i - 1])) || (string[i] != string[num - i - 1])){
-
+        if((!fc[string[i]] || (fc[string[i]] != string[num - i - 1])) ){
             return 0;     
-        } 
+        }
+        
+    }
+    if(num%2 && fc[string[num /2 ]] != string[num /2 ]){
+            return 0;
     }
     return 1;
 }
@@ -38,7 +38,7 @@ int main(){
 
     int isp = 0;
     int ism = 0;
-
+    memset(fc, 0, sizeof(fc));
     fc['A'] = 'A';
     fc['E'] = '3';
     fc['H'] = 'H';
